@@ -1,0 +1,142 @@
+:root{--brand:#198754;--dark:#121212}
+body{font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,Ubuntu,Cantarell,'Noto Sans',sans-serif; background:#F5F5EF;}
+.wood-bg{background: linear-gradient(rgba(255,255,255,.92),rgba(255,255,255,.92)), url('https://images.unsplash.com/photo-1505852679233-d9fd70aff56d?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat fixed}
+.navbar-brand{letter-spacing:.3px}
+.hero{min-height:60vh;background-size:cover;background-position:center}
+.hero-1{background-image:url('https://images.unsplash.com/photo-1523419409543-a5e549c1cfb7?q=80&w=1600&auto=format&fit=crop')}
+.hero-2{background-image:url('https://images.unsplash.com/photo-1504148455329-4ff0802cfb7e?q=80&w=1600&auto=format&fit=crop')}
+.hero-3{background-image:url('https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1600&auto=format&fit=crop')}
+.card .bi{vertical-align:-.2rem}
+footer a:hover{color:#fff!important}
+/* Minor tweaks */
+.carousel .hero{filter: saturate(1.05)}
+
+/* Footer color override */
+footer.bg-dark{background-color:#1F2839 !important}
+
+/* Splash (Intro) Screen */
+.splash{position:fixed; inset:0; background: radial-gradient(1200px 600px at 30% 20%, #1a1a1a 0%, #0f0f0f 60%, #000 100%); display:flex; align-items:center; justify-content:center; z-index:2000; transition:opacity .6s ease; overflow:hidden}
+.splash.hide{opacity:0; pointer-events:none}
+.splash::after{content:""; position:absolute; inset:-30%; background: linear-gradient(115deg, transparent 40%, rgba(255,255,255,.06) 50%, transparent 60%); transform: translateX(-120%) rotate(8deg); animation: sweep 2s 0.3s ease forwards}
+.splash-inner{display:flex; flex-direction:column; align-items:center; gap:.65rem}
+.splash-logo{height:84px; width:auto; filter: drop-shadow(0 8px 28px rgba(0,0,0,.5)); transform: scale(.9); animation: logo-pop .9s ease forwards}
+.splash-title{color:#fff; font-weight:900; letter-spacing:.55rem; text-transform:uppercase; font-size: clamp(1.4rem, 2.8vw + 1rem, 3rem); animation: title-reveal 1.6s .2s ease forwards, glowPulse 2.4s 1.6s ease-in-out infinite; opacity:0; background: linear-gradient(90deg,#fff,#d7ffe0,#fff); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; text-align:center; max-width: 92vw; font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;}
+.splash-hint{color:#bdbdbd; font-size:.8rem; opacity:.7}
+
+@keyframes title-reveal{
+  0%{opacity:0; transform:scale(1.2); letter-spacing:1rem}
+  60%{opacity:1; transform:scale(1); letter-spacing:.7rem}
+  100%{opacity:1; letter-spacing:.6rem}
+}
+
+@keyframes logo-pop{0%{transform:scale(.9); opacity:.6} 100%{transform:scale(1); opacity:1}}
+@keyframes glowPulse{0%,100%{filter: drop-shadow(0 0 0 rgba(25,135,84,.0))} 50%{filter: drop-shadow(0 0 18px rgba(25,135,84,.45))}}
+@keyframes sweep{to{transform: translateX(120%) rotate(8deg)}}
+
+@media (prefers-reduced-motion: reduce){
+  .splash{transition:none}
+  .splash-title{animation:none; opacity:1}
+}
+
+/* Mobile tweaks for perfect centering */
+@media (max-width: 575.98px){
+  .splash-inner{padding: 0 6vw}
+  .splash-title{letter-spacing:.28rem; font-size: clamp(1.25rem, 8vw, 2.2rem)}
+  .splash-logo{height:72px}
+}
+
+/* Nav icon spacing */
+.navbar-nav .nav-link .bi{margin-right:.4rem; vertical-align:-.125rem}
+
+/* Floating WhatsApp button */
+.floating-whatsapp{
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25D366;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(0,0,0,.18);
+  z-index: 1040;
+  text-decoration: none;
+}
+.floating-whatsapp:hover{filter: brightness(1.05); color:#fff}
+.floating-whatsapp .bi{font-size: 1.6rem;}
+
+/* Contact page hero */
+.contact-hero{
+  position: relative;
+  background: url('../images/Wood_BG.jpg') center/cover no-repeat;
+}
+.contact-hero::before{ content:''; position:absolute; inset:0; background: none; }
+.contact-hero > .container{position: relative; color: #fff;}
+.contact-hero h1{color:#fff; text-shadow: 0 2px 8px rgba(0,0,0,.25)}
+.contact-hero p{color: rgba(255,255,255,.9)}
+.contact-hero .underline{
+  width: 80px; height: 4px; background: var(--brand); border-radius: 2px; margin-top:.5rem
+}
+
+/* Transparent navbar variant (useful over imagery) */
+.navbar.bg-transparent { background: transparent !important; box-shadow: none !important; }
+.navbar.bg-transparent .navbar-brand,
+.navbar.bg-transparent .nav-link { color: #fff !important; }
+
+/* Let hero appear behind the sticky navbar */
+.overlay-nav{ margin-top: -80px; padding-top: 120px; }
+
+/* Custom Navbar Styles for white, rounded, shadowed navbar */
+.navbar {
+  border-radius: 2rem !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08) !important;
+  background: #fff !important;
+  overflow: hidden; /* keep rounded corners when collapsed on mobile */
+}
+.navbar .navbar-brand {
+  color: #198754 !important;
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: 0.5px;
+}
+/* Taller navbar variant */
+.navbar.nav-tall{padding-top: .9rem !important; padding-bottom: .9rem !important;}
+/* Brand stack */
+.navbar-brand .brand-logo{height:52px; width:auto}
+.navbar-brand .brand-group{line-height:1.5;}
+.brand-title{font-weight:800; letter-spacing:.6px; font-size: clamp(1.1rem, 1.1vw + 1rem, 1.6rem); text-transform:uppercase; color:#1b5e20}
+.brand-subtitle{font-weight:700; font-size: clamp(.65rem, .3vw + .55rem, .85rem); letter-spacing:.28rem; color:#6c757d}
+@media (max-width: 576px){
+  .navbar.nav-tall{padding-top:.55rem !important; padding-bottom:.55rem !important;}
+  .navbar-brand .brand-logo{height:38px}
+  .brand-title{font-size:1.05rem}
+  .brand-subtitle{font-size:.62rem; letter-spacing:.22rem}
+}
+
+/* Wood image navbar variant for Contact page */
+.navbar-wood{
+  background: url('../images/Wood_BG.jpg') center/cover no-repeat !important;
+}
+.navbar-wood .navbar-brand, .navbar-wood .nav-link{ color:#fff !important; }
+.navbar-nav .nav-link {
+  color: #222 !important;
+  font-weight: 500;
+  padding: 0.5rem 1.2rem;
+  border-radius: 1.5rem;
+  transition: background 0.2s, color 0.2s;
+}
+.navbar-nav .nav-link{position:relative}
+.navbar-nav .nav-link::after{
+  content:""; position:absolute; left:0; right:0; bottom:-6px; height:2px; background: var(--brand);
+  transform: scaleX(0); transform-origin:left; transition: transform .25s ease; border-radius:2px;
+}
+.navbar-nav .nav-link:hover::after, .navbar-nav .nav-link.active::after{transform: scaleX(1)}
+@media (max-width: 991.98px) {
+  .navbar {
+    border-radius: 1.25rem !important; /* keep rounded on mobile */
+    margin: 0 0.5rem;
+  }
+}
